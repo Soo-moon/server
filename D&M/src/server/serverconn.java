@@ -1,18 +1,21 @@
 package server;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+
+import shared.Player;
 
 public class serverconn {
 	static ServerSocket serversocket = null;
 	static Socket clientSocket = null;
 	static DataOutputStream out =null;
-	static DataInputStream in = null;
+	static ObjectInputStream in = null;
 	static Scanner scan = new Scanner(System.in);
+	static Player player=null;
 
 	public static void main(String[] args) throws IOException {
 		serversocket =new ServerSocket(5000);
@@ -46,16 +49,34 @@ public class serverconn {
 			}
 		});
 		
+		Thread inThread  = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					in = new ObjectInputStream(clientSocket.getInputStream());
+					while(true) {
+							player = (Player)in.readObject();
+							System.out.println(player.ballspeed);
+						if(in.readObject().equals("stop"))
+							break;
+					}
+				} catch (Exception e) {
+					// TODO: handle exceptio
+					System.out.println(e);
+				}
+			}
+		});
+		
 		
 		try {
 			System.out.println("서버생성");
 			clientSocket = serversocket.accept();
 			System.out.println("클라이언트 연결");
 			outThread.start();
-						
-			in = new DataInputStream(clientSocket.getInputStream());
-			System.out.println(in.readUTF());
-
+			inThread.start();			
+			
 		}catch (Exception e) {
 			// TODO: handle exception
 			String error = e.toString();
