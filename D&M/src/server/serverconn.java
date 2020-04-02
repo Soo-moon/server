@@ -23,7 +23,7 @@ public class serverconn  {
 		serversocket = new ServerSocket(5000);
 
 		Thread outThread = new Thread(new Runnable() {
-
+			//Å×½ºÆ®
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
