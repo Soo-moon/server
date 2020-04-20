@@ -21,7 +21,7 @@ public class serverconn  {
 
 	public static void main(String[] args) throws IOException {
 		serversocket = new ServerSocket(5000);
-
+		// 1207
 		Thread outThread = new Thread(new Runnable() {
 			//Å×½ºÆ®
 			@Override
