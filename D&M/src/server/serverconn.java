@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import shared.Player;
@@ -18,9 +20,10 @@ public class serverconn  {
 	static ObjectInputStream in = null;
 	static Scanner scan = new Scanner(System.in);
 	static Player player = null;
+	static ArrayList<Player> players = new ArrayList<>();
 
 	public static void main(String[] args) throws IOException {
-		serversocket = new ServerSocket(5000);
+		serversocket = new ServerSocket(6000);
 		// 1207
 		Thread outThread = new Thread(new Runnable() {
 			//Å×½ºÆ®
@@ -59,16 +62,25 @@ public class serverconn  {
 			}
 		});
 
+		
+		
 		Thread inThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				try {
 					in = new ObjectInputStream(clientSocket.getInputStream());
 					while (true) {
-						player = (Player) in.readObject();
-						System.out.println(player.name);
+						
+					//	players = (ArrayList<Player>) in.readObject();
+											
+							players = (ArrayList<Player>) in.readObject();
+							Iterator<Player> it = players.iterator();
+							while(it.hasNext()) {
+								player =it.next();
+								System.out.println(player.name);
+							}
+						
 						if (in.readObject().equals("stop"))
 							break;
 					}
