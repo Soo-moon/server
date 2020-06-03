@@ -1,6 +1,6 @@
 package server;
 
-
+import DB.OracleTest;
 
 public class server  {
 	
@@ -8,7 +8,6 @@ public class server  {
 		
 		Network network = new Network();
 		network.start();
-	
 	}
 
 }

@@ -17,6 +17,8 @@ public class Data_instream extends Thread {
 		try {
 			obj = (Obj) in.readObject();
 			System.out.println(obj.getcode());
+			
+			
 		} catch (IOException | ClassNotFoundException e) {
 			System.out.println("Input error " + e.getClass().getName() + ": " + e.getMessage());
 			e.printStackTrace();

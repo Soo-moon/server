@@ -4,17 +4,13 @@ import java.io.Serializable;
 
 public class Player implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
+    private static final long serialVersionUID = 1L;
 
-	public String teamname,name,position;
-    public int season,power,Condition,speed,health,Control;
+    String teamname,name,position,a;
+    int season,power,Condition,speed,health,Control,ballspeed;
 
 
-	public int ballspeed;
-
-	
-	public Player(String teamname , String name , String position ,int season , int power ,int Condition ,int speed , int health, int Control ,int ballspeed ){
+    public Player(String teamname , String name , String position ,int season , int power ,int Condition ,int speed , int health, int Control ,int ballspeed,String a ){
         this.teamname = teamname;
         this.name = name;
         this.position=position;
@@ -25,6 +21,7 @@ public class Player implements Serializable {
         this.health=health;
         this.Control=Control;
         this.ballspeed=ballspeed;
+        this.a=a;
     }
 
     public int stat(){
