@@ -20,6 +20,7 @@ public class DBconnection {
 			conn = DriverManager.getConnection(url,user,pw);
 			
 			System.out.println("DB 연결");
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패: "+e.toString());
 		}catch(SQLException e) {

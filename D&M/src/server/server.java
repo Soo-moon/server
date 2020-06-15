@@ -1,7 +1,5 @@
 package server;
 
-import DB.OracleTest;
-
 public class server  {
 	
 	public static void main(String[] args) {

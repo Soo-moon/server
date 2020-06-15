@@ -16,6 +16,7 @@ public class FileOutThread extends Thread{
 	
 	public FileOutThread(String id) {this.id=id;}
 	
+	
 	public  void run() {
 		FileOutputStream fileOutputStream =null;
 			
@@ -26,6 +27,8 @@ public class FileOutThread extends Thread{
 			ObjectOutputStream objectOutputStream =new ObjectOutputStream(fileOutputStream);
 			
 			objectOutputStream.writeObject(obj);
+			
+			System.out.println(id+": 파일변경 완료");
 			
 			fileOutputStream.close();
 			objectOutputStream.close();

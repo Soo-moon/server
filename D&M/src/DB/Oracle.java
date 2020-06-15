@@ -8,11 +8,13 @@ import java.util.ArrayList;
 
 import shared.Player;
 
-public class OracleTest extends Thread {
+public class Oracle extends Thread {
 	String data;
 	ArrayList<Player> arraylist =new ArrayList<>();
-	
-	public OracleTest(String data) {this.data = data;}
+	String id;
+	public Oracle(String data,String id) {this.data = data;
+	this.id=id;
+	}
 
 	public void run() {
 		// TODO Auto-generated method stub
@@ -52,8 +54,9 @@ public class OracleTest extends Thread {
 				
 				Player player = new Player(teamname, name, position, season, power, condition, speed, health, control, ballspeed, a);
 				arraylist.add(player);
-				
+					
 			}
+			System.out.println("DB 검색 완료");
 		}catch (SQLException e) {
 			System.out.println("select 문 예외 ");
 			e.printStackTrace();
