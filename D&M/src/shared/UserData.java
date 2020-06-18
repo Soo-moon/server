@@ -9,6 +9,8 @@ public class UserData implements Serializable {
 
     String id;
     ArrayList<Player> playerArrayList = new ArrayList<>();
+    String inrto;
+    String bitmap;
 
 
     public UserData(){}
@@ -21,4 +23,27 @@ public class UserData implements Serializable {
 
     public ArrayList getTeamdata(){ return playerArrayList; }
 
+    public void setintro(String intro){
+        this.inrto = intro;
+    }
+    
+    public String getInrto(){
+        return inrto;
+    }
+    
+    public void setBitmap(String bitmap){
+        this.bitmap = bitmap;
+    }
+
+    public String getBitmap(){
+        return bitmap;
+    }
+    
+    public int Teampoint() {
+    	int teampoint = 0;
+    	for(int i = 0 ; i< playerArrayList.size(); i++) {
+    		teampoint += playerArrayList.get(i).stat();
+    	}    	
+    	return teampoint;
+    }
 }

@@ -53,6 +53,19 @@ public class Player implements Serializable {
         }
         return player;
     }
+    
+    public Player Fail(Player player) {
+        if (player.position_type.equals("타자") || player.position_type.equals("포수")) {
+            player.power--;
+            player.Condition--;
+            player.speed--;
+        } else {
+            player.health--;
+            player.Control--;
+            player.ballspeed--;
+        }
+        return player;
+    }
 
    
 	public ArrayList addlist(ArrayList arrayList){

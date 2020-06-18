@@ -15,7 +15,7 @@ public class Cl_Data {
 	String state = "normal";
 	UserData userData = new UserData();
 
-	public Cl_Data(String id, Socket socket, ObjectOutputStream out,UserData userData) {
+	public Cl_Data(String id, Socket socket, ObjectOutputStream out, UserData userData) {
 		this.id = id;
 		this.socket = socket;
 		this.outstream = out;

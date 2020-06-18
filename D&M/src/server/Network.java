@@ -123,5 +123,9 @@ public class Network extends Thread {
 		data_out.start();
 		data_out.join();
 	}
+	
+	public static void addwaitlist(Client client) {
+		server.waitingList.addList(client_list.get(client.getid()));
+	}
 
 }
